@@ -37,12 +37,10 @@ namespace WindowsFormsApp1
             InitializeComponent();
             //authenticate at startup
             Authenticate();
-
         }
 
         public void Authenticate()
         {
-
             //scope
             string[] scopes = new string[] { "https://www.google.com/m8/feeds/" };     // view your basic profile info.
             try
@@ -56,8 +54,6 @@ namespace WindowsFormsApp1
                                                                                              , "test"
                                                                                              , CancellationToken.None
                                                                                              , new FileDataStore("test")).Result;
-
-
                 // Translate the Oauth permissions to something the old client libray can read
                 tokenResponse = credential.Token;
 
@@ -66,9 +62,7 @@ namespace WindowsFormsApp1
                 {
                     //refresh token process
                     RefreshToken(secrets, scopes);
-
                 }
-
                 //fetch contacts from google
                 RunContactsSample();
             }
@@ -77,9 +71,6 @@ namespace WindowsFormsApp1
                 //log Error
                 log.Error("Authentication Error");
             }
-
-
-
         }
 
         private void RunContactsSample()
@@ -186,7 +177,7 @@ namespace WindowsFormsApp1
 
                 RunContactsSample();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 lblResult.Text = ex.Message;
                 lblResult.Visible = true;
